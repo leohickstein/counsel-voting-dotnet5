@@ -1,0 +1,24 @@
+<button ui-sref="newMeasure" type="button" class="btn btn-primary">New Measure</button>
+<br /><br />
+
+<h3 ng-if="measures.length > 0">All Measures</h3>
+<table class="table measuretable" ng-if="measures.length > 0">
+  <tr>
+    <td><b>Subject</b></td>
+    <td><b>Current Status</b></td>
+    <td></td>
+  </tr>
+  <tr ng-repeat="measure in measures">
+    <td>{{ measure.subject }}</td>
+    <td ng-switch on="measure.status">
+      <span ng-switch-when="Passed" class="badge rounded-pill bg-success">Passed</span>
+      <span ng-switch-when="Failed" class="badge rounded-pill bg-danger">Failed to Pass</span>
+      <span ng-switch-when="Open" class="badge rounded-pill bg-secondary">Open</span>
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary" ui-sref="viewMeasure({id:measure.measureId})">View</button> 
+      <!-- <button type="button" class="btn btn-danger" ng-click="deleteMeasure(measure)">Delete</button>  -->
+    </td>
+  </tr>
+</table>
+<h3 ng-if="!measures.length > 0">No measures found.</h3>

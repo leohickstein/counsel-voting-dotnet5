@@ -1,0 +1,15 @@
+<div class="mb-3">
+    <!-- <label for="name" class="form-label">Name</label> -->
+    <input type="text" ng-model="$parent.voteName" placeholder="Name" class="form-control" id="name">
+</div>
+<span>Vote Decision&nbsp;</span>
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" ng-model="$parent.voteChoice" name="flexRadioDefault" id="flexRadioYes" value="Yes">
+    <label class="form-check-label" for="flexRadioYes">Yes</label>
+</div>
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" ng-model="$parent.voteChoice" name="flexRadioDefault" id="flexRadioNo" value="No">
+    <label class="form-check-label" for="flexRadioNo">No</label>
+</div>
+
+<button type="submit" class="btn btn-primary" ng-disabled="$parent.voteName.length == 0">Vote</button>

@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-sm-8">
+    <h1 class="display-5 fw-bold">{{ measure.subject }}</h1>
+    <p class="col-md-8 fs-4">{{ measure.description }}</p>
+  </div>
+  <div class="col-sm-4" ng-show="measure.status=='Open'">
+      <div class="card text-dark bg-light mb-3">
+        <div class="card-header"><b>Quick Vote</b></div>
+        <div class="card-body">
+          <form class="form-horizontal" role="form" ng-submit="voteMeasure()">
+            <div ng-include="'partials/_vote-form.html'"></div>
+        </form>
+        </div>
+      </div>
+  </div>
+  <div class="col-sm-4" ng-show="measure.status=='Passed'">
+    <div class="card text-dark bg-success mb-3">
+      <div class="card-body text-center text-light"><b>Passed</b></div>
+    </div>
+  </div>
+  <div class="col-sm-4" ng-show="measure.status=='Failed'">
+    <div class="card text-dark bg-danger mb-3">
+      <div class="card-body text-center text-light"><b>Failed to Pass</b></div>
+    </div>
+  </div>
+</div>
+
+<br /><br />
+
+<h3>List of people who have voted</h3>
+<table class="table" ng-if="measure.votes.length > 0">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Vote</th>
+      <th scope="col">When</th>
+    </tr>
+      <tr ng-repeat="vote in measure.votes">
+          <td>{{ vote.name }}</td>
+          <td>{{ vote.voteChoice }}</td>
+          <td>{{ vote.voteDate | date:'medium' }}</td>
+      </tr>
+</table>
+<span ng-if="!measure.votes.length > 0">We have no votes for this measure.</span>
+
+<!-- <div>
+    <a class="btn btn-primary" ui-sref="editMeasure({id:measure.measureId})">Edit</a>
+</div> -->

@@ -1,0 +1,12 @@
+{
+    "version": "1.0.0",
+    "name": "counselApp",
+    "private": true,
+    "devDependencies": {},
+    "scripts": {
+        "start": "http-server -o"
+    },
+    "dependencies": {
+        "http-server": "^0.12.3"
+    }
+}
